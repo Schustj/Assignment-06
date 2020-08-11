@@ -1,0 +1,65 @@
+---
+title: "Assignment 06"
+author: "Jonathan Schuster"
+date: "08/11/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE, echo=FALSE, message=FALSE}
+library(tidyverse)
+library(HelpersMG)
+library(lubridate)
+library(dplyr)
+library(readr)
+library(ggplot2)
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r wget, echo=FALSE, message=FALSE, cache=TRUE}
+
+wget("https://ourworldindata.org/covid-deaths", destfile = "C:/Users/Jonny/Documents/GitHub/Assignment-06/raw_data/owid-covid-data.csv")
+
+
+```
+
+```{r formingdata, echo=FALSE, message=FALSE}
+raw_data1 <- read_csv("raw_data/owid-covid-data.csv")
+data1 <- raw_data1 %>% select(date, location, diabetes_prevalence, aged_70_older, total_deaths) %>% rename(Country = "location") %>% filter(date == "2020-06-30") 
+
+write.csv(data1, "C:/Users/Jonny/Documents/GitHub/Assignment-06/output/june_deaths_by_country.csv" )
+```
+
+```{r formingdata2, echo=FALSE, message=FALSE}
+
+data2 <- raw_data1 %>% select(date, location, total_deaths) %>% rename(Country = "location")
+
+write.csv(data1, "C:/Users/Jonny/Documents/GitHub/Assignment-06/output/european_deaths_by_date.csv" )
+```
+
+```{r graphing1, echo=FALSE, message=FALSE}
+
+ggplot(data1, aes(diabetes_prevalence, total_deaths), color = "Country") + geom_point() + theme_linedraw() + labs(x = "Has Diabetes", y = "Total Deaths", title = "Deaths due to Diabetes")
+
+```
+
+**Interpretation:**
+
+I'll add this later.
+
+```{r graphing2, echo=FALSE, message=FALSE}
+
+ggplot(data1, aes(aged_70_older, total_deaths), color = "Country") + geom_point() + theme_linedraw() + labs(x = "Ages over 70", y = "Total Deaths", title = "Individuals over 70 Deaths")
+
+```
+
+```{r linegraph, echo=FALSE, message=FALSE}
+
+ggplot(data2, aes(date, total_deaths)) + geom_line()
+
+```
+
+
+**Answer:**
+
+I can't figure out this code, but I can say China was the first country to pass 1000 deaths on the date of 02-11-2020.
+
