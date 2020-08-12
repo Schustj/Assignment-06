@@ -20,6 +20,7 @@ You will be using COVID-19 data from Our World in Data for this project. This da
 * Write a chunk that uses ggplot2 to create a scatter plot that compares the total deaths between all countries by diabetes prevalence.  Please use the ggplot2 linedraw theme for your plot and provide meaningful axis titles. What is your interpretation of this plot?
 
 * Write a chunk that uses ggplot2 to create a scatter plot that compares the total deaths between all countries by the percentage of people over 70 years of age.  Please use the ggplot2 linedraw theme for your plot and provide meaningful axis titles. What is your interpretation of this plot?
+
 Write one last chuck that produces a line graph of the total number of deaths for each European country by date. Provide meaningful axis labels and color the lines by country name. Which country was the first to exceed 1,000 deaths? What date did that occur on?
 
 Take some time and look over the variables in this dataset. This is one possible source of raw data for your project. I will show you another next time.

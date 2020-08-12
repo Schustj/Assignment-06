@@ -19,10 +19,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 wget("https://ourworldindata.org/covid-deaths", destfile = "C:/Users/Jonny/Documents/GitHub/Assignment-06/raw_data/owid-covid-data.csv")
 
-
 ```
 
-```{r formingdata, echo=FALSE, message=FALSE}
+```{r formingdata, echo=FALSE, message=FALSE, warning=FALSE}
 raw_data1 <- read_csv("raw_data/owid-covid-data.csv")
 data1 <- raw_data1 %>% select(date, location, diabetes_prevalence, aged_70_older, total_deaths) %>% rename(Country = "location") %>% filter(date == "2020-06-30") 
 
@@ -36,7 +35,7 @@ data2 <- raw_data1 %>% select(date, location, total_deaths) %>% rename(Country =
 write.csv(data1, "C:/Users/Jonny/Documents/GitHub/Assignment-06/output/european_deaths_by_date.csv" )
 ```
 
-```{r graphing1, echo=FALSE, message=FALSE}
+```{r graphing1, echo=FALSE, message=FALSE, warning=FALSE}
 
 ggplot(data1, aes(diabetes_prevalence, total_deaths), color = "Country") + geom_point() + theme_linedraw() + labs(x = "Has Diabetes", y = "Total Deaths", title = "Deaths due to Diabetes")
 
@@ -46,13 +45,13 @@ ggplot(data1, aes(diabetes_prevalence, total_deaths), color = "Country") + geom_
 
 I'll add this later.
 
-```{r graphing2, echo=FALSE, message=FALSE}
+```{r graphing2, echo=FALSE, message=FALSE, warning=FALSE}
 
 ggplot(data1, aes(aged_70_older, total_deaths), color = "Country") + geom_point() + theme_linedraw() + labs(x = "Ages over 70", y = "Total Deaths", title = "Individuals over 70 Deaths")
 
 ```
 
-```{r linegraph, echo=FALSE, message=FALSE}
+```{r linegraph, echo=FALSE, message=FALSE, warning=FALSE}
 
 ggplot(data2, aes(date, total_deaths)) + geom_line()
 
